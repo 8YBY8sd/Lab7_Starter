@@ -99,7 +99,7 @@ async function getRecipes() {
   //            take two parameters - resolve, and reject. These are functions
   //            you can call to either resolve the Promise or Reject it.
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
   /**************************/
   // A4-A11 will all be *inside* the callback function we passed to the Promise
   // we're returning
