@@ -54,13 +54,19 @@ self.addEventListener('fetch', function (event) {
       }
 
       //Otherwise fetch the resource
-      return fetch(event.request).then((fetchedResponse) => {
-        //add it to the cache
-        cache.put(event.request, fetchedResponse.clone());
-        //and return network response.
-        return fetchedResponse;
-      })
+      // return fetch(event.request).then((fetchedResponse) => {
+      //   //add it to the cache
+      //   cache.put(event.request, fetchedResponse.clone());
+      //   //and return network response.
+      //   return fetchedResponse;
+      // })
       
+      return fetch(event.request).then(function (fetchedResponse) {
+        cache.put(event.request, fetchedResponse.clone());
+        return fetchedResponse;
+      });
+
+
     })
 
 
