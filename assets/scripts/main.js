@@ -47,7 +47,7 @@ function initializeServiceWorker() {
   // B1. TODO - Check if 'serviceWorker' is supported in the current browser
   if ("serviceWorker" in navigator) {
     // B2. TODO - Listen for the 'load' event on the window object.
-    addEventListener("load", (event) => {
+    self.addEventListener("load", (event) => {
       // Steps B3-B6 will be *inside* the event listener's function created in B2
       // B3. TODO - Register './sw.js' as a service worker (The MDN article
       //            "Using Service Workers" will help you here)
@@ -64,7 +64,7 @@ function initializeServiceWorker() {
       } catch (error) {
         // B5. TODO - In the event that the service worker registration fails, console
         //            log that it has failed.
-        console.error(`Registration failed with ${error}`);
+        console.error("Failed to register service worker");
       }
       // STEPS B6 ONWARDS WILL BE IN /sw.js
     });
@@ -99,7 +99,7 @@ async function getRecipes() {
   //            take two parameters - resolve, and reject. These are functions
   //            you can call to either resolve the Promise or Reject it.
   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
   /**************************/
   // A4-A11 will all be *inside* the callback function we passed to the Promise
   // we're returning
