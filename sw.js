@@ -40,7 +40,7 @@ self.addEventListener('fetch', function (event) {
   // https://developer.chrome.com/docs/workbox/caching-strategies-overview/
   /*******************************/
   // B7. TODO - Respond to the event by opening the cache using the name we gave
-  //            above (CACHE_NAME)
+  //           above (CACHE_NAME)
   event.respondWith(caches.open(CACHE_NAME).then((cache) => {
     // B8. TODO - If the request is in the cache, return with the cached version.
     //            Otherwise fetch the resource, add it to the cache, and return
@@ -53,7 +53,7 @@ self.addEventListener('fetch', function (event) {
       }
 
       //Otherwise fetch the resource
-      return fetch(event.request.url).then((fetchedResponse) => {
+      return fetch(event.request).then((fetchedResponse) => {
         //add it to the cache
         cache.put(event.request, fetchedResponse.clone());
         //and return network response.
@@ -64,5 +64,9 @@ self.addEventListener('fetch', function (event) {
 
 
   }));
+
+
+
+
   
 });
